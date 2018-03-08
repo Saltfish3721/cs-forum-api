@@ -12,22 +12,15 @@ var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 
 //due to async it does not work
-/*app.get('/api/topic',function(req,res){
-	var a = Article.find({"articleID":1},function(err,doc){
-		console.log(doc)
-		var doc_to_json = JSON.parse({"feeds":doc})
+app.get('/api/topic',async function(req,res){
 
-		res.json(doc_to_json)
-		res.seed(doc)
-	})
+    await Article.find({"articleID":1},function(err,doc){
+         res.json(doc)
+    })
 
-	var query = Article.find({"articleID":1})
-	query.limit(1)
-    console.log(query.model.Schema)
-	res.json(query)
-	console.log(a)
-    res.send("hi")
-})*/
+   res.send("the message that I don't want to send")
+
+})
 
 app.post('/api/post/article',function(req,res){
 
